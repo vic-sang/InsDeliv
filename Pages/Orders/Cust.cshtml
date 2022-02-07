@@ -1,0 +1,48 @@
+@page
+@model InsDeliv.Pages_Orders.CustModel
+
+@{
+    ViewData["Title"] = "Customer";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].CustomerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var Customer in Model.Customer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Customer.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Customer.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Customer.LastName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@Customer.CustomerID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@Customer.CustomerID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@Customer.CustomerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
